@@ -18,6 +18,13 @@ namespace nbody {
 		void Integrate( System& sys, float dt); 
 		//~Riemann();
 	};
+
+	class RungeKutta : public IntegrateScheme {
+		public:
+		RungeKutta();
+		~RungeKutta();
+		void Integrate( System& sys, float dt);
+	};
 }
 
 #endif // _NBODY_INTEGRATE_H

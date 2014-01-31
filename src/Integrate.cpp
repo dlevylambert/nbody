@@ -12,6 +12,7 @@ namespace nbody{
 	Riemann::~Riemann() { }
 
 	void Riemann::Integrate (System &sys, float dt) {
+		sys.computeGravitation();
 		Vector3f r,v,a;
 		for( size_t i = 0; i < sys.nBodies(); i++) {
 			r = sys.body(i).position();
@@ -26,4 +27,18 @@ namespace nbody{
 			sys.body(i).velocity() = v;
 		}
 	}
+
+	RungeKutta::RungeKutta() { }
+
+	RungeKutta::~RungeKutta() { }
+
+	void RungeKutta::Integrate (System &sys, float dt) {
+		// what I'm currently writing
+		dt++;
+		sys.body(0).position() = sys.body(0).position();	
+
+
+	}
+
+
 }

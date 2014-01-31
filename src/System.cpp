@@ -49,7 +49,7 @@ namespace nbody {
   }
 
   void System::update( float dt ) {
-    computeGravitation();
+    // computeGravitation(); bring this into "integrateSystem( dt )"
     integrateSystem( dt );
   }
 
