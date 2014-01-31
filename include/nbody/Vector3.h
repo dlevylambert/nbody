@@ -83,7 +83,7 @@ inline T cube( T x ) {
 
 template<typename T>
 std::ostream& operator<<( std::ostream &os, const Vector3<T> &vec ) {
-  os << vec.x() << " " << vec.y() << " " << vec.z();
+  os << vec.x() << "\t" << vec.y() << "\t" << vec.z();
   return os;
 }
 

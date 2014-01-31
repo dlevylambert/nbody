@@ -67,6 +67,8 @@ namespace nbody {
       //_body[i].position() = r;
       //_body[i].velocity() = v;
     //}
+	//RungeKutta *rungekutta = new RungeKutta();
+	//rungekutta->Integrate(*this,dt);
 	Riemann *riemann = new Riemann();
 	riemann->Integrate(*this,dt);
   }
