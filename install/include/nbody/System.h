@@ -9,6 +9,8 @@
 
 namespace nbody {
 
+  enum IntegrateType {RIEMANN, RUNGE_KUTTA_2, RUNGE_KUTTA_4};
+
   class System {
     size_t _nBodies;
     Body *_body;
@@ -30,12 +32,14 @@ namespace nbody {
     void interactBodies( size_t i, size_t j, float softFactor, Vector3f &acc ) const;
     void computeGravitation();
     void integrateSystem( float dt );
+    void integrateSystem( float dt, IntegrateType int_type); // overloading on integrate-type
     void readState( std::istream &input );
     void readState( std::string filename );
     void writeState( std::ostream &output ) const;
     void writeState( std::string filename ) const;
     void initRandomState();
     void update( float dt );
+    void update( float dt, IntegrateType int_type); // overloading on integrate-type
     void setSoftening( float soft ) { _softFactor = soft; }
     void setDamping( float damp ) { _dampingFactor = damp; }
   };

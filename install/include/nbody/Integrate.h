@@ -16,15 +16,22 @@ namespace nbody {
 		Riemann();
 		~Riemann();
 		void Integrate( System& sys, float dt); 
-		//~Riemann();
 	};
 
-	class RungeKutta : public IntegrateScheme {
+	class RK2 : public IntegrateScheme {
 		public:
-		RungeKutta();
-		~RungeKutta();
+		RK2();
+		~RK2();
 		void Integrate( System& sys, float dt);
 	};
+
+	class RK4 : public IntegrateScheme {
+		public:
+		RK4();
+		~RK4();
+		void Integrate( System& sys, float dt); 
+	};
+
 }
 
 #endif // _NBODY_INTEGRATE_H

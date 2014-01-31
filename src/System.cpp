@@ -54,28 +54,33 @@ namespace nbody {
   }
 
   void System::integrateSystem( float dt ) {
-    //Vector3f r, v, a;
-    //for( size_t i = 0; i < _nBodies; ++i ) {
-    //  r = _body[i].position();
-    //  v = _body[i].velocity();
-    //  a = _body[i].force();
-
-      //v = v + ( a * dt );
-      //v = v * _dampingFactor;
-      //r = r + v * dt;
-
-      //_body[i].position() = r;
-      //_body[i].velocity() = v;
-    //}
-	//RungeKutta *rungekutta = new RungeKutta();
-	//rungekutta->Integrate(*this,dt);
-	Riemann *riemann = new Riemann();
-	riemann->Integrate(*this,dt);
+	// by default, pick RK4
+	RK4 *rk4 = new RK4();
+	rk4->Integrate(*this,dt);
   }
+
+  void System::integrateSystem( float dt, IntegrateType int_type) {
+	switch(int_type){
+		case RIEMANN:
+			{Riemann *riemann = new Riemann();
+			riemann->Integrate(*this,dt);
+			break;}
+		case RUNGE_KUTTA_2:
+			{RK2 *rk2 = new RK2();
+			rk2->Integrate(*this,dt);
+			break;}
+		case RUNGE_KUTTA_4:
+			{RK4 *rk4 = new RK4();
+			rk4->Integrate(*this,dt);
+			break;}}}
 
   void System::update( float dt ) {
     // computeGravitation(); bring this into "integrateSystem( dt )"
     integrateSystem( dt );
+  }
+
+  void System::update( float dt, IntegrateType int_type) {
+    integrateSystem ( dt , int_type);
   }
 
   void System::readState( std::istream &input ) {

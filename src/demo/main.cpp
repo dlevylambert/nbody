@@ -7,8 +7,8 @@ int main() {
   try {
     std::ifstream input{ "resources/nbody/binary-system-simple.txt" };
     nbody::Simulation sim{input};
-    for( int i = 0; i < 40; ++i ) {
-      std::cout << "==EVOLUTION " << i + 1 << "\n";
+    for( int i = 0; i < 200; ++i ) {
+      std::cout << "==EVOLUTION OF " << i + 1 << "\n";
       sim.saveRun();
       sim.evolveSystem( 1e4, 0.000001 );
     }
