@@ -22,6 +22,9 @@ namespace nbody {
     System( std::istream &input ) : _nBodies{}, _body{nullptr} { readState( input ); }
     System( std::string filename ) : _nBodies{}, _body{nullptr} { readState( filename ); }
     ~System() { delete [] _body; }
+    inline size_t nBodies() const { return _nBodies; }
+    inline Body& body( size_t i ) { return _body[i]; } // check if out of bounds!!
+    inline float dampingFactor() const { return _dampingFactor; }
     void interactBodies( size_t i, size_t j, float softFactor, Vector3f &acc ) const;
     void computeGravitation();
     void integrateSystem( float dt );

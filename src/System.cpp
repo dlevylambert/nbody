@@ -1,6 +1,7 @@
 #include <nbody/constants.h>
 #include <nbody/System.h>
 #include <nbody/Vector3.h>
+#include <nbody/Integrate.h>
 
 #include <fstream>
 #include <stdexcept>
@@ -30,19 +31,21 @@ namespace nbody {
   }
 
   void System::integrateSystem( float dt ) {
-    Vector3f r, v, a;
-    for( size_t i = 0; i < _nBodies; ++i ) {
-      r = _body[i].position();
-      v = _body[i].velocity();
-      a = _body[i].force();
+    //Vector3f r, v, a;
+    //for( size_t i = 0; i < _nBodies; ++i ) {
+    //  r = _body[i].position();
+    //  v = _body[i].velocity();
+    //  a = _body[i].force();
 
-      v = v + ( a * dt );
-      v = v * _dampingFactor;
-      r = r + v * dt;
+      //v = v + ( a * dt );
+      //v = v * _dampingFactor;
+      //r = r + v * dt;
 
-      _body[i].position() = r;
-      _body[i].velocity() = v;
-    }
+      //_body[i].position() = r;
+      //_body[i].velocity() = v;
+    //}
+	Riemann *riemann = new Riemann();
+	riemann->Integrate(*this,dt);
   }
 
   void System::update( float dt ) {
