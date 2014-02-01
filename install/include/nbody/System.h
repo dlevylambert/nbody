@@ -1,8 +1,8 @@
 #ifndef _NBODY_SYSTEM_H
 #define _NBODY_SYSTEM_H
 
-#include <nbody/Vector3.h>
-#include <nbody/Body.h>
+#include "Vector3.h"
+#include "Body.h"
 
 #include <iosfwd>
 #include <string>

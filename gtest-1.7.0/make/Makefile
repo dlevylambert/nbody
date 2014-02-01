@@ -25,7 +25,7 @@ USER_DIR = ../..
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g -Wall -Wextra -pthread
+CXXFLAGS += -g -Wall -Wextra -pthread -std=c++0x
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
@@ -71,11 +71,11 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-Integrate.o : $(USER_DIR)/src/Integrate.cpp $(USER_DIR)/include/nbody/Integrate.h $(GTEST_HEADERS)
+Integrate.o : $(USER_DIR)/src/Integrate.cpp $(USER_DIR)/include/nbody/Integrate.h $(USER_DIR)/include/nbody/System.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/src/Integrate.cpp
 
 Integrate_unittest.o : $(USER_DIR)/src/Integrate_unittest.cc \
-                     $(USER_DIR)/include/nbody/Integrate.h $(GTEST_HEADERS)
+                     $(USER_DIR)/include/nbody/Integrate.h $(USER_DIR)/include/nbody/System.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/src/Integrate_unittest.cc
 
 Integrate_unittest : Integrate.o Integrate_unittest.o gtest_main.a
