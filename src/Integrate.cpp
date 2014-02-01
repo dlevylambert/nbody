@@ -1,6 +1,6 @@
-#include <nbody/Integrate.h>
-#include <nbody/Vector3.h>
-#include <nbody/System.h>
+#include "../include/nbody/Integrate.h"
+#include <../include/nbody/Vector3.h>
+#include <../include/nbody/System.h>
 
 namespace nbody{
 

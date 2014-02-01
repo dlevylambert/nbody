@@ -17,7 +17,7 @@
 GTEST_DIR = ..
 
 # Where to find user code.
-USER_DIR = ../samples
+USER_DIR = ../..
 
 # Flags passed to the preprocessor.
 # Set Google Test's header directory as a system directory, such that
@@ -29,7 +29,7 @@ CXXFLAGS += -g -Wall -Wextra -pthread
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = sample1_unittest
+TESTS = Integrate_unittest 
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -71,12 +71,12 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-sample1.o : $(USER_DIR)/sample1.cc $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1.cc
+Integrate.o : $(USER_DIR)/src/Integrate.cpp $(USER_DIR)/include/nbody/Integrate.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/src/Integrate.cpp
 
-sample1_unittest.o : $(USER_DIR)/sample1_unittest.cc \
-                     $(USER_DIR)/sample1.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/sample1_unittest.cc
+Integrate_unittest.o : $(USER_DIR)/src/Integrate_unittest.cc \
+                     $(USER_DIR)/include/nbody/Integrate.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/src/Integrate_unittest.cc
 
-sample1_unittest : sample1.o sample1_unittest.o gtest_main.a
+Integrate_unittest : Integrate.o Integrate_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@

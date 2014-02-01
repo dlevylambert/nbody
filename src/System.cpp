@@ -1,7 +1,7 @@
-#include <nbody/constants.h>
-#include <nbody/System.h>
-#include <nbody/Vector3.h>
-#include <nbody/Integrate.h>
+#include "../include/nbody/constants.h"
+#include "../include/nbody/System.h"
+#include "../include/nbody/Vector3.h"
+#include "../include/nbody/Integrate.h"
 
 #include <fstream>
 #include <stdexcept>

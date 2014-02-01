@@ -1,7 +1,7 @@
 #ifndef _NBODY_BODY_H
 #define _NBODY_BODY_H
 
-#include <nbody/Vector3.h>
+#include "Vector3.h"
 
 #include <iosfwd>
 

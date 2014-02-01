@@ -1,4 +1,4 @@
-#include <nbody/Simulation.h>
+#include "../include/nbody/Simulation.h"
 
 #include <sstream>
 #include <chrono>

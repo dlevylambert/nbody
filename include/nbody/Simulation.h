@@ -1,7 +1,7 @@
 #ifndef _NBODY_SIMULATION_H
 #define _NBODY_SIMULATION_H
 
-#include <nbody/System.h>
+#include "System.h"
 
 #include <iosfwd>
 #include <string>

@@ -1,5 +1,5 @@
-#include <nbody/Body.h>
-#include <nbody/Vector3.h>
+#include "../include/nbody/Body.h"
+#include "../include/nbody/Vector3.h"
 
 #include <iostream>
 #include <iomanip>
