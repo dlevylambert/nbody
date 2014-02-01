@@ -25,7 +25,7 @@ USER_DIR = ../..
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -g -Wall -Wextra -pthread -std=c++0x
+CXXFLAGS += -g -Wall -Wextra -pthread 
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
@@ -71,6 +71,9 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
+System.o : $(USER_DIR)/src/System.cpp $(USER_DIR)/include/nbody/System.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/src/System.cpp
+
 Integrate.o : $(USER_DIR)/src/Integrate.cpp $(USER_DIR)/include/nbody/Integrate.h $(USER_DIR)/include/nbody/System.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/src/Integrate.cpp
 
@@ -78,5 +81,5 @@ Integrate_unittest.o : $(USER_DIR)/src/Integrate_unittest.cc \
                      $(USER_DIR)/include/nbody/Integrate.h $(USER_DIR)/include/nbody/System.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/src/Integrate_unittest.cc
 
-Integrate_unittest : Integrate.o Integrate_unittest.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
+Integrate_unittest : Integrate.o Integrate_unittest.o System.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -stdlib=libstdc++ -L/Applications/XCode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/usr/lib -lstdc++ -lpthread ../../build/nbody/*.o *.o *.a -o $@
