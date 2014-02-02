@@ -17,11 +17,11 @@ GTEST_DIR := $(DEV_DIR)/third_party/gtest
 
 ## The compilers and programs to use
 SHELL := /bin/sh
-CC := gcc
+CC := clang++
 # If you're a Mac user and only have clang,
 # you'll want to change CXX and LD to clang++.
-CXX := g++
-LD := g++
+CXX := clang++
+LD := clang++
 CP := cp -r
 RSYNC := rsync -iCau --exclude='\.*' --delete
 AR := ar
@@ -39,9 +39,9 @@ FLAGS := -m64 -Wall -Wextra -Wshadow -Werror -pedantic
 # Use the C99 standard
 CFLAGS := -std=c99 $(FLAGS)
 # Use the C++11 standard and warn on violations of Meyers' "Effective C++"
-CXXFLAGS := -std=c++11 -Weffc++ $(FLAGS)
+CXXFLAGS := -stdlib=libc++ -std=c++11 -Weffc++ $(FLAGS)
 # Flags for the linker; link to math and pthread (required for gtest)
-LDFLAGS := -L$(INSTALL_DIR)/lib -L$(GTEST_DIR)/lib -lm -lpthread
+LDFLAGS := -stdlib=libc++ -std=c++11 -L$(INSTALL_DIR)/lib -L$(GTEST_DIR)/lib -lm -lpthread
 
 ## Turn on debugging symbols and disable optimizations when running 'make'
 DEBUG_FLAGS := -g -O0 -D _DEBUG

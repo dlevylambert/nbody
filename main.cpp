@@ -1,4 +1,3 @@
-#include <nbody/Simulation.h>
 
 #include <iostream>
 #include <fstream>
@@ -21,19 +20,23 @@
 }*/
 
 int TestRiemannIntegrate() {
-	//System sys = new System(1);
+	//nbody::System* sys;
+	//sys = new nbody::System(1);
 	//float dt = 0;
-	//Riemann riemann = new Riemann();
-	//riemann.Integrate(sys, dt);
-	//boolean position = (int) sys.body(i).position().x() == 0 && (int) sys.body(i).position().y() == 0 && (int) sys.body(i).position().z() == 0;
-	//boolean velocity = (int) sys.body(i).velocity().x() == 0 && (int) sys.body(i).velocity().y() == 0 && (int) sys.body(i).velocity().z() == 0;
+	//nbody::Riemann* riemann;
+	//riemann = new nbody::Riemann();
+	//riemann->Integrate(*sys, dt);
+	return 0;
+	//return (int) sys->body(0).position().x();
+	//boolean position = (int) sys.body(0).position().x() == 0 && (int) sys.body(0).position().y() == 0 && (int) sys.body(0).position().z() == 0;
+	//boolean velocity = (int) sys.body(0).velocity().x() == 0 && (int) sys.body(0).velocity().y() == 0 && (int) sys.body(0).velocity().z() == 0;
 	//if (position && velocity) {
 	//return 0;
 	//}
 	//else {
 	//return 1;
 	//}
-	return 0;
+	//return 0;
 }
 
 int main() {
