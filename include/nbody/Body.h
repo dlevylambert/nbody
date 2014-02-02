@@ -21,6 +21,10 @@ namespace nbody {
     inline Vector3f force() const { return _force; }
     inline Vector3f& force() { return _force; }
     inline float mass() const { return _mass; }
+		inline void setPosition(Vector3f newPos) { _position = newPos; }
+		inline void setVelocity(Vector3f newVel) { _velocity = newVel; }
+		inline void setForce(Vector3f newFor) { _force = newFor; }
+		inline void setMass(Vector3f newMass) { _mass = newMass; }
     friend std::istream& operator>>( std::istream &is, Body &body );
     friend std::ostream& operator<<( std::ostream &os, const Body &body );
   };

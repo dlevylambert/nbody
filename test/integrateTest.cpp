@@ -6,7 +6,7 @@
 #include <nbody/constants.h>
 #include <gtest/gtest.h>
 
-TEST(TestIntegrate, Riemann) {
+TEST(TestIntegrate, Riemann1) {
 	nbody::System* sys;
 	sys = new nbody::System(1);
 	float dt = 0;
@@ -26,8 +26,7 @@ TEST(TestIntegrate, Riemann) {
 	ASSERT_EQ((int) sys->body(0).position().z() , 0);
 	ASSERT_EQ((int) sys->body(0).velocity().x() , 0);
 	ASSERT_EQ((int) sys->body(0).velocity().y() , 0);
-	ASSERT_EQ((int) sys->body(0).velocity().z() , 0);
-	
+	ASSERT_EQ((int) sys->body(0).velocity().z() , 0);	
 }
 
 TEST(TestIntegrate, RK2) {
@@ -35,12 +34,21 @@ TEST(TestIntegrate, RK2) {
 	sys = new nbody::System(1);
 	//sys->body(0).
 	float dt = 10;
+	auto pos = Vector3f{ 1, 1, 4 };
+	//auto vel = Vector3f{ 1, 2, 3 };
+	sys->body(0).setPosition(pos);
+	std::cout << " position " << (int) sys->body(0).position().x();
+	std::cout << " position " << (int) sys->body(0).position().y();
+	std::cout << " position " << (int) sys->body(0).position().z();
+  std::cout << " velocity " << (int) sys->body(0).velocity().x();
+	std::cout << " velocity " << (int) sys->body(0).velocity().y();
+	std::cout << " velocity " << (int) sys->body(0).velocity().z();
 	nbody::Riemann* riemann;
 	riemann = new nbody::Riemann();
 	riemann->Integrate(*sys, dt);
-	std::cout << " velocity " << (int) sys->body(0).position().x();
-	std::cout << " velocity " << (int) sys->body(0).position().y();
-	std::cout << " velocity " << (int) sys->body(0).position().z();
+	std::cout << " position " << (int) sys->body(0).position().x();
+	std::cout << " position " << (int) sys->body(0).position().y();
+	std::cout << " position " << (int) sys->body(0).position().z();
   std::cout << " velocity " << (int) sys->body(0).velocity().x();
 	std::cout << " velocity " << (int) sys->body(0).velocity().y();
 	std::cout << " velocity " << (int) sys->body(0).velocity().z();
