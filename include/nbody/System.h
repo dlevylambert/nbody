@@ -29,6 +29,7 @@ namespace nbody {
     inline Body& body( size_t i ) const { return _body[i]; } // overloading on const-ness
     inline float softFactor() const { return _softFactor; }
     inline float dampingFactor() const { return _dampingFactor; }
+    inline void initRandomState() {};
     void interactBodies( size_t i, size_t j, float softFactor, Vector3f &acc ) const;
     void computeGravitation();
     void integrateSystem( float dt );
@@ -37,7 +38,6 @@ namespace nbody {
     void readState( std::string filename );
     void writeState( std::ostream &output ) const;
     void writeState( std::string filename ) const;
-    void initRandomState();
     void update( float dt );
     void update( float dt, IntegrateType int_type); // overloading on integrate-type
     void setSoftening( float soft ) { _softFactor = soft; }
