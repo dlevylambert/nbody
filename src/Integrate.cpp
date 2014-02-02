@@ -24,8 +24,8 @@ namespace nbody{
 			v = v * sys.dampingFactor(); 
 			r = r + v * dt;
 
-			sys.body(i).position() = r;
-			sys.body(i).velocity() = v;
+			sys.body(i).setPosition(r);
+			sys.body(i).setVelocity(v);
 		}
 	}
 
@@ -46,8 +46,8 @@ namespace nbody{
 			v = v * sys.dampingFactor(); 
 			r = r + v * (dt * 0.5f);
 
-			k2_sys.body(i).position() = r;
-			k2_sys.body(i).velocity() = v;}
+			k2_sys.body(i).setPostition(r);
+			k2_sys.body(i).setVelocity(v);}
 		// at this point k2_sys has 1st order estimate of where
 		// system is (position, velocity) at time += dt / 2
 		k2_sys.computeGravitation();
@@ -61,8 +61,8 @@ namespace nbody{
 			v = v * sys.dampingFactor(); 
 			r = r + v * dt;
 
-			sys.body(i).position() = r;
-			sys.body(i).velocity() = v;}
+			sys.body(i).setPosition(r);
+			sys.body(i).setVelocity(v);}
 		// i.e. v(t+dt) = v(t) + k_2 * t where
 		// k_2 = acceleration at [dt/2 * a(t)] linearly extended from t
 	}
@@ -84,8 +84,8 @@ namespace nbody{
 			v = v * sys.dampingFactor(); 
 			r = r + v * (dt * 0.5f);
 
-			k2_sys.body(i).position() = r;
-			k2_sys.body(i).velocity() = v;}
+			k2_sys.body(i).setPosition(r);
+			k2_sys.body(i).setVelocity(v);}
 		// at this point k2_sys has 1st order estimate of where
 		// system is (position, velocity) at time += dt / 2
 		k2_sys.computeGravitation();
@@ -102,8 +102,8 @@ namespace nbody{
 			v = v * sys.dampingFactor();
 			r = r + v * (dt * 0.5f);
 
-			k3_sys.body(i).position() = r;
-			k3_sys.body(i).velocity() = v;}
+			k3_sys.body(i).setPosition(r);
+			k3_sys.body(i).setVelocity(v);}
 		k3_sys.computeGravitation();
 		// now compute k4
 		System k4_sys = sys;
@@ -117,8 +117,8 @@ namespace nbody{
 			v = v * sys.dampingFactor();
 			r = r + v * dt;
 
-			k4_sys.body(i).position() = r;
-			k4_sys.body(i).velocity() = v;}
+			k4_sys.body(i).setPosition(r);
+			k4_sys.body(i).setVelocity(v);}
 		k4_sys.computeGravitation();
 		for( size_t i = 0; i < sys.nBodies(); i++) {
 			r = sys.body(i).position();
@@ -131,8 +131,8 @@ namespace nbody{
 			v = v * sys.dampingFactor(); 
 			r = r + v * dt;
 
-			sys.body(i).position() = r;
-			sys.body(i).velocity() = v;}
+			sys.body(i).setPosition(r);
+			sys.body(i).setVelocity(v);}
 		// i.e. v(t+dt) = v(t) + k_2 * t where
 		// k_2 = acceleration at [dt/2 * a(t)] linearly extended from t
 	}
